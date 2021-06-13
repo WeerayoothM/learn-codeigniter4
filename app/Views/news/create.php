@@ -1,19 +1,29 @@
+<?= $this->extend('layouts/main'); ?>
+
+<?= $this->section('content')  ;?>
+
 <h2><?= esc($title) ;?></h2>
 
 <?= \Config\Services::validation()->listErrors(); ?>
 
-<a href="/news">Go back</a>
+<a class='btn btn-warning' href="/news">Go back</a>
 
-<form action="/news/create" method='post'>
-    <?= csrf_field(); ?>
+<div >
+    <form action="/news/create" method='post'>
+        <?= csrf_field(); ?>
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input class ='form-control' type="input" name='title'>
+            <br>
+        </div>
+        
+        <div class="form-group">
+            <label for="body">Text</label>
+            <textarea class ='form-control' name="body" id="" cols="30" rows="10"></textarea>
+            <br>
+        </div>
+        <input class ='btn btn-success' type="submit" name='submit' value ='Create news item'>
+    </form>
+</div>
 
-    <label for="titel">Title</label>
-    <input type="input" name='title'>
-    <br>
-
-    <label for="body">Text</label>
-    <textarea name="body" id="" cols="30" rows="10"></textarea>
-    <br>
-
-    <input type="submit" name='submit' value ='Create news item'>
-</form>
+<?= $this->endSection()  ;?>

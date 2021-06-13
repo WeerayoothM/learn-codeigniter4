@@ -10,9 +10,14 @@ class News extends Controller {
             'news' => $model->getNews(),
             'title' => 'News archive'
         ];
-        echo view('templates/header',$data);
-        echo view('news/overview',$data);
-        echo view('templates/footer',$data);
+
+        // don't use lauout
+        // echo view('templates/header',$data);
+        // echo view('news/overview',$data);
+        // echo view('templates/footer',$data);
+        
+        // use layout
+        return view('news/overview',$data);
     }
 
     public function view($slug = null){
@@ -23,9 +28,12 @@ class News extends Controller {
         }
         
         $data['title'] = $data['news']['title'];
-        echo view('templates/header',$data);
-        echo view('news/view',$data);
-        echo view('templates/footer',$data);
+        // echo view('templates/header',$data);
+        // echo view('news/view',$data);
+        // echo view('templates/footer',$data);
+
+        // use layout
+        return view('news/view',$data);
     }
     public function create(){
         $model = new NewsModel();
@@ -40,9 +48,12 @@ class News extends Controller {
             ]);
             echo view('news/success');
         }else{
-            echo view('templates/header',['title' => 'Create a news item']);
-            echo view('news/create');
-            echo view('templates/footer');
+            // echo view('templates/header',['title' => 'Create a news item']);
+            // echo view('news/create');
+            // echo view('templates/footer');
+
+            // use layout
+            return  view('news/create',['title' => 'Create a news item']);
         }
     }
 }
