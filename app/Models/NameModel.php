@@ -7,4 +7,19 @@ class NameModel extends Model{
     protected $primaryKey = 'id';
 
     protected $allowedFields = ['name','email'];
+
+    protected $beforeInsert = ['checkName'];
+    // afterInsert
+    // beforeUpdate
+    // afterUpdate
+    // afterFind
+    // afterDelete
+
+    public function checkName(array $data) {
+        $newNames = $data['data']['name'].' Extra Features';
+        $data['data']['name'] = $newNames;
+
+        return $data;
+    }
+
 }

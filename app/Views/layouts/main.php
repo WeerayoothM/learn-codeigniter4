@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CodeIgniter Tutorial</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.25/datatables.min.css"/>
+</head>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -20,16 +22,24 @@
                 <a class="nav-link active" aria-current="page" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="#">Features</a>
+                <a class="nav-link" href="/news">News</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="#">Pricing</a>
+                <a class="nav-link" href="/namelist">Namelist</a>
                 </li>
                 <li class="nav-item">
                 <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
                 </li>
             </ul>
             </div>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                <a class="nav-link" href="/login">Login</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="/register">Sign Up</a>
+                </li>   
+            </ul>
         </div>
     </nav>
 

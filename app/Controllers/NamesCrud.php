@@ -44,6 +44,17 @@ class NamesCrud extends Controller {
             'email'=>$this->request->getVar('email')
         ];
         $NameModel->update($id,$data);
+
+        //* another logic
+        /*
+        $name = $NameModel->find($id);
+        if ($name ) {
+            $_POST['id'] = $id;
+            $NameModel->save($_POST);
+        }
+        */
+
+
         return $this->response->redirect(site_url('/namelist'));
     }
 
