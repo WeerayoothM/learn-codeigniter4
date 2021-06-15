@@ -1,11 +1,19 @@
 <?php namespace App\Controllers;
 
 use App\Models\NewsModel;
+use App\Models\CustomModel;
 use CodeIgniter\Controller;
 
 class News extends Controller {
     public function index() {
         $model = new NewsModel();  // สร้าง object instance เพื่อเข้าถึง method ใน model
+        
+        $db = db_connect();
+        $customModel = new CustomModel($db);
+        echo '<pre>';
+            print_r($customModel->getNews());
+        echo '<pre>';
+
         $data = [
             'news' => $model->getNews(),
             'title' => 'News archive'
