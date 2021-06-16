@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.25/datatables.min.css"/>
 </head>
 </head>
-<body>
+<body style="max-width:100vw;">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
             <a class="navbar-brand text-white" href="/">CodeIgniter 4</a>

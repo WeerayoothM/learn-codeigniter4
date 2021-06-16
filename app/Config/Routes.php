@@ -33,28 +33,29 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
+$routes->get('/posts','Posts::index');
 
-// auth route
-$routes->get('login','Login::index');
-$routes->get('login/auth','Login::auth');
-$routes->get('register','Register::index');
-$routes->get('register/save','Register::save');
-$routes->get('logout','Login::logout');
-$routes->get('dashboard', 'Dashboard::index',['filter' => 'auth']);
+// // auth route
+// $routes->get('login','Login::index');
+// $routes->get('login/auth','Login::auth');
+// $routes->get('register','Register::index');
+// $routes->get('register/save','Register::save');
+// $routes->get('logout','Login::logout');
+// $routes->get('dashboard', 'Dashboard::index',['filter' => 'auth']);
 
-// add these crud
-$routes->get('namelist','NamesCrud::index');
-$routes->get('addname','NamesCrud::create');
-$routes->post('submit-form','NamesCrud::store');
-$routes->get('editname/(:num)','NamesCrud::singleUser/$1');
-$routes->post('update','NamesCrud::update');
-$routes->get('delete/(:num)','NamesCrud::delete/$1');
+// // add these crud
+// $routes->get('namelist','NamesCrud::index');
+// $routes->get('addname','NamesCrud::create');
+// $routes->post('submit-form','NamesCrud::store');
+// $routes->get('editname/(:num)','NamesCrud::singleUser/$1');
+// $routes->post('update','NamesCrud::update');
+// $routes->get('delete/(:num)','NamesCrud::delete/$1');
 
-// news page
-$routes->match(['get','post'],'news/create','News::create');
-$routes->get('news','News::index');
-$routes->get('news/(:segment)','News::view/$1');
-$routes->get('(:any)','Pages::view/$1');
+// // news page
+// $routes->match(['get','post'],'news/create','News::create');
+// $routes->get('news','News::index');
+// $routes->get('news/(:segment)','News::view/$1');
+// $routes->get('(:any)','Pages::view/$1');
 
 /*
  * --------------------------------------------------------------------
