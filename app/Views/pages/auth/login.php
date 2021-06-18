@@ -10,6 +10,11 @@
 <body>
 
     <div class="container mt-4 ">
+        <?php if(isset($validation)) : ?>
+            <div class='text-danger'>
+                <?= $validation->listErrors() ?>
+            </div>
+        <?php endif ;?>
         <div class="row justify-content-md-center">
             <div class="col-md-6">
                 <h1>Login</h1>
@@ -19,15 +24,42 @@
                         <?= session()->getFlashdata('msg'); ?>
                     </div>
                  <?php } ?>
-                <form action="/login/auth" methos = 'post' >
+                <form  method = 'post' >
                     <div class="mb-3">
                         <label for="inputemail" class='form-label'>Email</label>
-                        <input type="email" name = 'email' class='form-control' id='inputforemail' value ="<?= set_value('email') ;?>">
+
+                        <input type="text" name = 'email' class='form-control' id='inputforemail'
+                         value ="<?= set_value('email') ;?>">
+                         <!-- use set_value to kepp data after refresh -->
                     </div>
                     <div class="mb-3">
                         <label for="inputpassword" class='form-label'>Password</label>
-                        <input type="password" name = 'password' class='form-control' id='inputforpassword' >
+                        <input type="password" name = 'password' 
+                        value ="<?= set_value('password') ;?>"
+                        class='form-control' id='inputforpassword' >
                     </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text" for="category">Options</label>
+                        </div>
+                        <select name='category' class="custom-select " id="inputGroupSelect01">
+                            <option value=""></option>
+                            <?php foreach($categories as $cat) :?>
+                                <option <?= set_select('category',$cat ) ?> value="<?= $cat ?>" ><?= $cat ?></option>
+                            <?php endforeach ;?>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="date" class='form-label'>Date</label>
+                        <input type="date" name = 'date' 
+                        value ="<?= set_value('date') ;?>"
+                        class='form-control' id='inputfordate' >
+                    </div>
+                    <?php
+                        echo '<pre>';
+                        print_r($_POST);
+                        echo '<pre>';
+                    ?>
                     <button type='submit' class='btn btn-primary'>Login</button>
                 </form>
                 <hr>
