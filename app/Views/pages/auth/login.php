@@ -24,7 +24,7 @@
                         <?= session()->getFlashdata('msg'); ?>
                     </div>
                  <?php } ?>
-                <form  method = 'post' >
+                <form  method = "post" enctype="multipart/form-data" >
                     <div class="mb-3">
                         <label for="inputemail" class='form-label'>Email</label>
 
@@ -55,11 +55,11 @@
                         value ="<?= set_value('date') ;?>"
                         class='form-control' id='inputfordate' >
                     </div>
-                    <?php
-                        echo '<pre>';
-                        print_r($_POST);
-                        echo '<pre>';
-                    ?>
+                    <div class="mb-3">
+                        <label for="exampleFormControlFile" class="form-label">Upload File</label>
+                        <input class="form-control" name="theFile" type="file" id = "exampleFormControlFile" >
+                    </div>
+                    
                     <button type='submit' class='btn btn-primary'>Login</button>
                 </form>
                 <hr>
