@@ -39,18 +39,42 @@ class Login extends Controller {
                 ] // check_date is a custom validator in Validations folder*/
 
                 // ! file is the global file variable we cannot use required rule | max_size in kilo byte
+                // 'theFile'=>[
+                //     'rules'=>'uploaded[theFile]|max_size[theFile,1024]|is_image[theFile]|max_dims[theFile,200,200]|ext_in[theFile,jpg,png]',
+                //     'label'=>'The File'
+                // ]
+                // multiple uploaded
+
+                //! uploaded[theFile.0] check at least 1 file uploaded
                 'theFile'=>[
-                    'rules'=>'uploaded[theFile]|max_size[theFile,1024]|is_image[theFile]|max_dims[theFile,200,200]|ext_in[theFile,jpg,png]',
+                    'rules'=>'uploaded[theFile.0]|max_size[theFile,1024]|is_image[theFile]',
                     'label'=>'The File'
                 ]
             ];
             if ($this->validate($rules)){
-                $file = $this->request->getFile('theFile');
-                if ($file->isValid() && !$file->hasMoved()){
+                /* single uploaded
+                     $file = $this->request->getFile('theFile');
+                    if ($file->isValid() && !$file->hasMoved()){
                     //? define our image name and then codeigniter will generate number of extension testName_1
                     // $file->move('./uploads/images', 'testName.'.$file->getExtension());
                     $file->move('./uploads/images', $file->getRandomName());
-                }
+                    }
+                 */
+
+                 // multiple uploaded
+                 $files = $this->request->getFiles();
+                 foreach ($files['theFile'] as $file ){
+                    if ($file->isValid() && !$file->hasMoved()){
+                        echo $file->getName().' - Real name<br> ';
+                        $file->move('./uploads/images/multiple');
+                        echo $file->getName().' - New name <br> <hr>';
+                        //! if want to insert the name of the file to db you should 
+                        //! always use the getName method after move the file to new location
+
+                    }
+                 }
+                 
+                 exit();
                 
 
                 return redirect()->to('/login/success');

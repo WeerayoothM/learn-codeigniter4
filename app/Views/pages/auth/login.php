@@ -57,7 +57,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="exampleFormControlFile" class="form-label">Upload File</label>
-                        <input class="form-control" name="theFile" type="file" id = "exampleFormControlFile" >
+                        <input class="form-control" multiple name="theFile[]" type="file" id = "exampleFormControlFile" >
                     </div>
                     
                     <button type='submit' class='btn btn-primary'>Login</button>
