@@ -59,6 +59,11 @@
                         <label for="exampleFormControlFile" class="form-label">Upload File</label>
                         <input class="form-control" multiple name="theFile[]" type="file" id = "exampleFormControlFile" >
                     </div>
+                    <?php 
+                        echo '<pre>';
+                            print_r($_POST);
+                        echo '<pre>';
+                    ?>
                     
                     <button type='submit' class='btn btn-primary'>Login</button>
                 </form>
