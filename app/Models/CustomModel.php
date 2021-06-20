@@ -115,4 +115,36 @@ class CustomModel{
         return $news;
 
     }
+
+    function createUser(){
+        $rand = rand(0,10000);
+
+        $this->db->transStart();
+
+        $data = [
+            'user_name'=>'My name is '. $rand,
+            'user_email'=>'test'.$rand.'@test.com',
+            'user_password' => sha1(time().''.$rand)
+        ];
+
+        $builder = $this->db->table('users');
+        $id = $builder->insert($data); // or $id = $this->db->insertID
+
+        $postData = [
+            'title'=>'Test Title'.$rand,
+            'body'=>'News description whatever',
+            'news_author'=>$id
+        ];
+
+        $builder = $this->db->table('news');
+        $id = $builder->insert($postData);
+        $this->db->transComplete();
+
+        $this->db->setDatabase('ci4_login');
+        $builder = $this->db->table('users');
+        $id = $builder->insert($data); // or $id = $this->db->insertID
+
+
+
+    }
 }
