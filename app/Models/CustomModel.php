@@ -90,4 +90,29 @@ class CustomModel{
         return $news;
         
     }
+
+    function getUsers($limit = false){
+        $builder = $this->db->table('users'); 
+
+        if ($limit )
+            $builder->limit($limit);
+        
+
+        $news = $builder->get()->getResult();
+        return $news;
+
+    }
+
+    function getAnotherUsers($limit = false){
+        $this->db->setDatabase('ci4_login');
+        $builder = $this->db->table('users'); 
+
+        if ($limit )
+            $builder->limit($limit);
+        
+
+        $news = $builder->get()->getResult();
+        return $news;
+
+    }
 }
